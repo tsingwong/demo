@@ -2,7 +2,7 @@
  * @Author: tsingwong 
  * @Date: 2018-03-03 18:53:19 
  * @Last Modified by: tsingwong
- * @Last Modified time: 2018-03-04 09:10:41
+ * @Last Modified time: 2018-03-04 09:26:24
  */
 
 //  例如将下面层级 JSON 转换为 平级 JSON
@@ -43,7 +43,14 @@ var data = {
     c: 123,
     妹子: '真妹子'
 };
-
+/**
+ * 递归处理数据
+ * 
+ * @param {object} input 
+ * @param {string} [prefix=''] 
+ * @param {map} [map=new Map()] 
+ * @returns {map} map
+ */
 function recusive(input, prefix = '', map = new Map()) {
     Object.entries(input).forEach(([key, value]) => {
         let k = key;
@@ -55,7 +62,12 @@ function recusive(input, prefix = '', map = new Map()) {
     });
     return map;
 }
-
+/**
+ * 将 Map 转换为 Object
+ * 
+ * @param {map} strMap 
+ * @returns {object} obj
+ */
 function strMapToObj(strMap) {
     let obj = Object.create(null);
     for (let [k,v] of strMap) {
